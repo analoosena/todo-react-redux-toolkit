@@ -10,8 +10,17 @@ export const Lista = styled.ul `
     align-items: center;
     gap: 5px;
     font-size: 15px;
-    color: #000;
     list-style: none;
+    
   }
+  .completed{
+    color: #c1c1c1;
+    text-decoration: line-through;
+  }
+  .pending{
+    color: #000;
+  }
+
 `
+
 
