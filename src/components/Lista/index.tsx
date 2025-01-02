@@ -2,7 +2,6 @@ import { Lista } from "./styles";
 
 type Props = {
   tasks: string[];
-
   completedTask: boolean[];
   setCompletedTask: React.Dispatch<React.SetStateAction<boolean[]>>; // Função para atualizar o estado
 };

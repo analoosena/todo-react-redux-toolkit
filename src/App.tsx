@@ -16,10 +16,18 @@ function App() {
   };
 
   const getCompletedTask = () => {
-    return listaTask.filter((_, index) => completedTask[index]);
+    const filteredTasks = listaTask.filter((_, index) => completedTask[index]);
+    const filteredBooleans = completedTask.filter(
+      (_, index) => completedTask[index]
+    );
+    return { tasks: filteredTasks, booleans: filteredBooleans };
   };
   const getPendingTask = () => {
-    return listaTask.filter((_, index) => !completedTask[index]);
+    const filteredTasks = listaTask.filter((_, index) => !completedTask[index]);
+    const filteredBooleans = completedTask.filter(
+      (_, index) => !completedTask[index]
+    );
+    return { tasks: filteredTasks, booleans: filteredBooleans };
   };
   const FilteredTasks = () => {
     switch (filter) {
@@ -28,7 +36,7 @@ function App() {
       case "pending":
         return getPendingTask();
       default:
-        return listaTask;
+        return { tasks: listaTask, booleans: completedTask};
     }
   };
   return (
@@ -40,8 +48,8 @@ function App() {
         newFilter={setFilter}
       />
       <ListaRenderizada
-        tasks={FilteredTasks()}
-        completedTask={completedTask}
+        tasks={FilteredTasks().tasks}
+        completedTask={FilteredTasks().booleans}
         setCompletedTask={setCompletedTask}
       />
     </>
