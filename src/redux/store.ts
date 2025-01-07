@@ -1,8 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { taskSlice } from "./task/reducer";
+import taskSlice from "./task/reducer";
 
-const store = configureStore ({
-  reducer: taskSlice.reducer
-})
+const store = configureStore({
+  reducer: {
+    task: taskSlice.reducer,
+  }
+});
 
-export type RootReducer = ReturnType<typeof store.getState>
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+
+export default store;
